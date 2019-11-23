@@ -1,0 +1,53 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Atomy, kapitola 4</title>
+</head>
+<body>
+
+    <table></table>
+
+    <!-- Vytvořit CSS -->
+    <style>
+        td{
+            border: 1px solid black;
+            width: 60px;
+            height: 60px;
+            text-align: center;
+            color: blue;
+        }
+    </style>
+
+    <!-- Vytvořit ext JS -->
+    <!-- ?? document.querySelector("table") : přístup do HTML elementu 'table' ..... jak použít pro více tabulek na stránce ?? -->
+    <script>
+        var table = document.querySelector("table");
+
+        for (var i=0; i<6; i++){
+            var row = document.createElement("tr");
+
+            for (var j=0; j<6; j++){
+            var cell = document.createElement("td");
+            row.appendChild(cell);
+            }
+
+            table.appendChild(row);
+        }
+    </script>
+
+    <script>
+        document.addEventListener("click", function(e){
+            var node = e.target;
+            if (node.nodeName == "TD"){ update(node);}
+        });
+
+        var update = function(cell){
+            cell.innerHTML += "o";
+        }
+    </script>
+</body>
+</html>
