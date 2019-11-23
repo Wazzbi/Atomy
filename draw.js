@@ -23,3 +23,22 @@ Draw.atoms = function(count){
 
     return result;
 }
+
+Draw.getPosition = function(node){
+    if (node.nodeName != "TD"){ return null};
+
+    var x = 0;
+    while (node.previousSibling){
+        x++;
+        node = node.previousSibling;
+    }
+
+    var row = node.parentNode;
+    var y = 0;
+    while (row.previousSibling){
+        y++;
+        row = row.previousSibling;
+    }
+
+    return[x, y];
+}
