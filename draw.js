@@ -1,44 +1,51 @@
-var Draw = {};
+var Draw = {
+  CELL: 60,
+  LINE: 2,
+  ATOM: 7,
+  _context: null
+};
 
-Draw.all = function(){
-    var html = "<table>";
-    for (var i=0; i<Board.length; i++){
-        html += "<tr>";
-        for (var j=0; j<Board.length; j++){
-            html += "<td>";
-            html += Draw.atoms(Board[j][i]);
-            html += "</td>";
-        }
-        html += "</tr>";
+Draw.all = function() {
+  var html = "<table>";
+  for (var i = 0; i < Board.length; i++) {
+    html += "<tr>";
+    for (var j = 0; j < Board.length; j++) {
+      html += "<td>";
+      html += Draw.atoms(Board[j][i]);
+      html += "</td>";
     }
-    html += "</table>";
-}
+    html += "</tr>";
+  }
+  html += "</table>";
+};
 
-Draw.atoms = function(count){
-    var result = "";
+Draw.atoms = function(count) {
+  var result = "";
 
-    for (var i=0; i<count; i++){
-        result += "o";
-    }
+  for (var i = 0; i < count; i++) {
+    result += "o";
+  }
 
-    return result;
-}
+  return result;
+};
 
-Draw.getPosition = function(node){
-    if (node.nodeName != "TD"){ return null};
+Draw.getPosition = function(node) {
+  if (node.nodeName != "TD") {
+    return null;
+  }
 
-    var x = 0;
-    while (node.previousSibling){
-        x++;
-        node = node.previousSibling;
-    }
+  var x = 0;
+  while (node.previousSibling) {
+    x++;
+    node = node.previousSibling;
+  }
 
-    var row = node.parentNode;
-    var y = 0;
-    while (row.previousSibling){
-        y++;
-        row = row.previousSibling;
-    }
+  var row = node.parentNode;
+  var y = 0;
+  while (row.previousSibling) {
+    y++;
+    row = row.previousSibling;
+  }
 
-    return[x, y];
-}
+  return [x, y];
+};
